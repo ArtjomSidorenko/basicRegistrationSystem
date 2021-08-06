@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
 const port = 3333;
+const basicRegistrationSystemRouter = require('./routes/registrationSystem');
 
 
 app.get('*', cors());
@@ -18,7 +19,7 @@ app.use(
         extended: true,
     })
 );
-
+app.use('/api', basicRegistrationSystemRouter);
 
 
 app.listen(port, () => {
