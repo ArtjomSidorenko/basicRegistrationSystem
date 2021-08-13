@@ -5,19 +5,116 @@
       <router-link to="/about">About</router-link>
     </div>
     <router-view/>-->
-    <div class="intro">
-      <div class="container">
-        <div class="card">
-          fsfafs
+
+    <div class="intro" >
+
+      <div class="container" >
+        <div class="intro__inner" >
+          <h2 class="intro__suptitle" style="color: white">Hello again!</h2>
+          <div class="login_position"> <a @click="$router.push('/login')"> <input class="btn_login" type="submit" name="" value="Login"></a></div>
+          <div class="register_position"><a @click="$router.push('/registration')"> <input class="btn_register" type="submit" name="" value="Register"></a></div>
         </div>
       </div>
     </div>
+    <div class="cursor"></div>
+
 
 
   </div>
 </template>
+<script>
 
+
+</script>
 <style>
+/* Button */
+.btn_login {
+
+  display: inline-block;
+  vertical-align: top;
+  padding: 10px 40px;
+
+
+
+  margin: auto;
+  text-align: center;
+
+  background: none;
+
+
+  border: 3px solid #fff;
+  border-radius: 24px;
+
+  font-size: 30px;
+  font-weight: 650;
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  outline: none;
+
+  height: 70px;
+  width: 400px;
+  transition: width 1s, background-color 1s, height 1s;
+
+
+}
+
+.btn_login:hover {
+  background-color: #fff;
+  color: deepskyblue;
+  width: 500px;
+  height: 100px;
+
+
+}
+
+.login_position{
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+.btn_register {
+
+  display: inline-block;
+  vertical-align: top;
+  padding: 10px 30px;
+  margin: auto;
+  text-align: center;
+
+  background: none;
+
+
+  border: 3px solid #fff;
+  border-radius: 24px;
+
+  font-size: 30px;
+  font-weight: 650;
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  outline: none;
+
+  height: 70px;
+  width: 400px;
+  transition: width 1s, background-color 1s, height 1s;
+}
+
+.btn_register:hover {
+  background-color: #fff;
+  color: deepskyblue;
+  width: 500px;
+  height: 100px;
+}
+
+.register_position{
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 /* Intro */
 .container{
   background: rgba(255, 255, 255, 0.25);
@@ -29,18 +126,49 @@
   position: center;
   margin: auto;
   width: 60%;
-  padding: 70px 0;
+  height: 550px;
+  line-height: 30px;
+  font-size: 20px;
+  align-items: center;
+
 
 }
-body
-{
-  background: url("../pictures/bgWithCirclesXS.jpg") ;
-  -webkit-background-size: cover;
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+
+.container:hover ~ .cursor{
+  transform: translate(-50%, -50%) scale(1.5);
+  background-color: white;
+  opacity: 5;
 }
+
+.intro{
+  align-items: center;
+}
+
+.intro__inner {
+  padding: 100px;
+
+}
+
+.intro__suptitle{
+  letter-spacing: 3px;
+  font-size: 40px;
+
+}
+
+.intro__title {
+  color: #fff;
+  font-size: 70px;
+  font-weight: 550;
+  text-transform: uppercase;
+  line-height: 1;
+  margin: 0 auto;
+}
+
+
+
+
+
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
