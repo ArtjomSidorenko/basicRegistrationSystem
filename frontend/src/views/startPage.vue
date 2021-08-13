@@ -1,22 +1,23 @@
+<!--
 <template>
   <div id="app">
-    <!--<div id="nav">
+    &lt;!&ndash;<div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
-    <router-view/>-->
+    <router-view/>&ndash;&gt;
 
-    <div class="intro" >
+    <div class="introS" >
 
-      <div class="container" >
-        <div class="intro__inner" >
-          <h2 class="intro__suptitle" style="color: white">Hello again!</h2>
-          <div class="login_position"> <a @click="$router.push('/login')"> <input class="btn_login" type="submit" name="" value="Login"></a></div>
-          <div class="register_position"><a @click="$router.push('/registration')"> <input class="btn_register" type="submit" name="" value="Register"></a></div>
+      <div class="containerStart" >
+        <div class="intro__innerStart" >
+          <h2 class="intro__suptitleStart" style="color: white">Hello again!</h2>
+          <div class="login_positionStart"> <a @click="$router.push('/login')"> <input class="btn_login" type="submit" name="" value="Login"></a></div>
+          <div class="register_positionStart"><a @click="$router.push('/registration')"> <input class="btn_register" type="submit" name="" value="Register"></a></div>
         </div>
       </div>
     </div>
-    <div class="cursor"></div>
+
 
 
 
@@ -116,7 +117,7 @@
 }
 
 /* Intro */
-.container{
+.containerStart{
   background: rgba(255, 255, 255, 0.25);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(4px);
@@ -134,28 +135,28 @@
 
 }
 
-.container:hover ~ .cursor{
+.containerStart:hover ~ .cursor{
   transform: translate(-50%, -50%) scale(1.5);
   background-color: white;
   opacity: 5;
 }
 
-.intro{
+.introS{
   align-items: center;
 }
 
-.intro__inner {
+.intro__innerStart {
   padding: 100px;
 
 }
 
-.intro__suptitle{
+.intro__suptitleStart{
   letter-spacing: 3px;
   font-size: 40px;
 
 }
 
-.intro__title {
+.intro__titleStart {
   color: #fff;
   font-size: 70px;
   font-weight: 550;
@@ -191,3 +192,4 @@
   color: #42b983;
 }
 </style>
+-->

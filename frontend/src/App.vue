@@ -4,17 +4,17 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>-->
+
     <router-view/>
 
-    <div class="intro" >
+
 
 
     <div class="cursor"></div>
 
 
-
     </div>
-  </div>
+
 </template>
 <script>
 
@@ -26,7 +26,7 @@ export default {
     window.addEventListener('mousemove', cursor);
 
     function cursor(e){
-      console.log(e)
+      /*console.log(e)*/
       mouseCursor.style.top = e.pageY + "px";
       mouseCursor.style.left = e.pageX + "px";
     }
@@ -50,14 +50,13 @@ link.addEventListener("mouseleave", () =>{
 }
 </script>
 <style>
+
 /*select */
 ::selection {
   color: white;
   background-color: deepskyblue;
 
 }
-
-
 
 /* cursor */
 .cursor{
@@ -67,56 +66,37 @@ link.addEventListener("mouseleave", () =>{
   width: 20px;
   height: 20px;
   pointer-events: none;
-  transition-duration: 200ms;
-  transition-timing-function: ease-out;
-  transition-property: background, transform;
-  z-index: 0;
-  transform-origin: 100% 100%;
   transform: translate(-50%, -50%);
-}
-cursor::after{
-  content: "";
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  border: 8px solid gray;
-  border-radius: 50%;
-  opacity: .5;
-  top: -8px;
-  left: -8px;
+  transition: all 0.1s ease;
+  transition-property: background, transform;
+  transform-origin: 100% 100%;
+  z-index: -1;
+  backdrop-filter: blur(10px);
+
 }
 
+
 .link-grow {
-  transform: scale(2);
-  background: #5f2eea;
+  transform:  scale(2);
+  background: white/*#5f2eea*/;
 }
 
 .hovered-link{
-  color: white;
+  color: black;
 
 }
 
-/* Intro */
-
-
-
-
-
+/*body*/
 
 body {
   background: url("../pictures/bgWithCirclesXS.jpg") no-repeat center;
   -webkit-background-size: cover;
   background-size: cover;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  font-family: "Open Sans", sans-serif;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-attachment: fixed;
+  cursor: none;
   color: white;
-  overflow: hidden;
 }
 * {
   font-family: "Do Hyeon", sans-serif;

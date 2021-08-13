@@ -7,12 +7,11 @@
     <router-view/>-->
 
     <div class="intro" >
-
-      <div class="container" >
-        <div class="intro__inner" >
+      <div class="container" align="center" >
+        <div class="intro__inner" align="center">
           <h2 class="intro__suptitle" style="color: white">Hello again!</h2>
-          <h1 class="intro__title">Welcome to the hub</h1>
-          <a @click="$router.push('/startPage')"> <input class="btn" type="submit" name="" value="Get Started"></a>
+          <h1 class="intro__title" align="center">Welcome to the hub</h1>
+         <div class="button_padding"> <a @click="$router.push('/startPage')"> <input class="btn" type="submit" name="" value="Get Started"></a></div>
         </div>
       </div>
     </div>
@@ -27,12 +26,13 @@
 
 </script>
 <style>
+
 /* Button */
 .btn {
-
   display: inline-block;
   vertical-align: top;
-  padding: 8px 30px;
+  padding: 10px 30px;
+  cursor: none;
   margin: auto;
   text-align: center;
 
@@ -42,75 +42,84 @@
   border: 3px solid #fff;
   border-radius: 24px;
 
-  font-size: 24px;
-  font-weight: 750;
+  text-indent: -7px;
+  font-size: 10px;
+  font-weight: bold;
   color: #fff;
   text-transform: uppercase;
   text-decoration: none;
   outline: none;
 
-  height: 70px;
-  width: 300px;
+
+  height: 60px;
+  width: 150px;
   transition: width 1s, background-color 1s;
 }
 
 .btn:hover {
   background-color: #fff;
   color: deepskyblue;
-  width: 480px;
-
-
+  width: 240px;
 }
-
-
-/* Intro */
-.container{
+.button_padding{
+  padding-bottom: 35px;
+}
+/* Container */
+.container {
   background: rgba(255, 255, 255, 0.25);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  position: center;
-  margin: auto;
-  width: 60%;
-  height: 550px;
-  line-height: 30px;
-  font-size: 20px;
-  align-items: center;
-
 
 }
 
 .container:hover ~ .cursor{
   transform: translate(-50%, -50%) scale(1.5);
-
   opacity: .5;
 }
 
-.intro{
-  align-items: center;
-}
 
+/*Intro*/
+
+.intro {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 350px;
+  padding-bottom: 350px;
+  line-height: 1.7;
+  width: 60%;
+  margin: auto ;
+  height: 500px;
+}
 .intro__inner {
-  padding: 100px;
+
+
 
 }
-
-.intro__suptitle{
-  letter-spacing: 5px;
-}
-
 .intro__title {
-  color: #fff;
-  font-size: 70px;
-  font-weight: 550;
+  font-family: Arial, sans-serif;
+  font-size: 35px;
+  font-style: normal;
+  font-weight: bold;
+  text-decoration: none;
   text-transform: uppercase;
-  line-height: 1;
+  color: #ffffff;
+
+
+
 
 }
-
-
+.intro__suptitle {
+ text-decoration: underline;
+  font-family: "Comic Sans MS";
+  font-style: italic;
+  font-size: 25px;
+  padding: 20px;
+}
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
