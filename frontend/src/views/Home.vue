@@ -11,7 +11,7 @@
         <div class="intro__inner" align="center">
           <h2 class="intro__suptitle" style="color: white">Hello again!</h2>
           <h1 class="intro__title" align="center">Welcome to the hub</h1>
-         <div class="button_padding"> <a @click="$router.push('/startPage')"> <input class="btn" type="submit" name="" value="Get Started"></a></div>
+          <div class="button_padding"> <a @click="$router.push('/startPage')"> <input class="btn" type="submit" name="" value="Get Started"></a></div>
         </div>
       </div>
     </div>
@@ -91,7 +91,7 @@
   padding-top: 350px;
   padding-bottom: 350px;
   line-height: 1.7;
-  width: 60%;
+  width: 70%;
   margin: auto ;
   height: 500px;
 }
@@ -114,32 +114,12 @@
 
 }
 .intro__suptitle {
- text-decoration: underline;
+  text-decoration: underline;
   font-family: "Comic Sans MS";
   font-style: italic;
   font-size: 25px;
   padding: 20px;
 }
 
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
 
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>

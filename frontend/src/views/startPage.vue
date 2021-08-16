@@ -1,23 +1,33 @@
-<!--
+
 <template>
   <div id="app">
-    &lt;!&ndash;<div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>&ndash;&gt;
+    <!--    &lt;!&ndash;<div id="nav">
+          <router-link to="/">Home</router-link> |
+          <router-link to="/about">About</router-link>
+        </div>
+        <router-view/>&ndash;&gt;-->
 
     <div class="introS" >
 
-      <div class="containerStart" >
-        <div class="intro__innerStart" >
-          <h2 class="intro__suptitleStart" style="color: white">Hello again!</h2>
-          <div class="login_positionStart"> <a @click="$router.push('/login')"> <input class="btn_login" type="submit" name="" value="Login"></a></div>
-          <div class="register_positionStart"><a @click="$router.push('/registration')"> <input class="btn_register" type="submit" name="" value="Register"></a></div>
+      <div class="containerStart" align="center">
+        <div class="intro__innerStart" align="center">
+
+          <h2 class="intro__suptitleStart" style="color: white" align="center">Hello again!</h2>
+
+          <div class="login_positionStart">
+            <a @click="$router.push('/login')">
+              <input class="btn_login" type="submit" name="" value="Login">
+            </a>
+          </div>
+
+          <div class="register_positionStart">
+            <a @click="$router.push('/registration')">
+              <input class="btn_register" type="submit" name="" value="Register"></a>
+          </div>
+
         </div>
       </div>
     </div>
-
 
 
 
@@ -33,53 +43,7 @@
 
   display: inline-block;
   vertical-align: top;
-  padding: 10px 40px;
-
-
-
-  margin: auto;
-  text-align: center;
-
-  background: none;
-
-
-  border: 3px solid #fff;
-  border-radius: 24px;
-
-  font-size: 30px;
-  font-weight: 650;
-  color: #fff;
-  text-transform: uppercase;
-  text-decoration: none;
-  outline: none;
-
-  height: 70px;
-  width: 400px;
-  transition: width 1s, background-color 1s, height 1s;
-
-
-}
-
-.btn_login:hover {
-  background-color: #fff;
-  color: deepskyblue;
-  width: 500px;
-  height: 100px;
-
-
-}
-
-.login_position{
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-}
-.btn_register {
-
-  display: inline-block;
-  vertical-align: top;
+  cursor: none;
   padding: 10px 30px;
   margin: auto;
   text-align: center;
@@ -90,30 +54,75 @@
   border: 3px solid #fff;
   border-radius: 24px;
 
-  font-size: 30px;
-  font-weight: 650;
+  text-indent: -7px;
+  font-size: 15px;
+  font-weight: bold;
   color: #fff;
   text-transform: uppercase;
   text-decoration: none;
   outline: none;
 
-  height: 70px;
-  width: 400px;
+  height: 60px;
+  width: 150px;
+  transition: width 1s, background-color 1s, height 1s;
+
+
+}
+
+.btn_login:hover {
+  background-color: #fff;
+  color: deepskyblue;
+  width: 240px;
+  height: 100px;
+
+
+}
+
+.login_positionStart{
+  padding-bottom: 25px;
+  padding-top: 25px;
+
+}
+.btn_register {
+
+  display: inline-block;
+  vertical-align: top;
+
+
+
+
+  margin: auto;
+  text-align: center;
+
+  background: none;
+
+
+  border: 3px solid #fff;
+  border-radius: 24px;
+
+  text-indent: -7px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  outline: none;
+
+  height: 60px;
+  width: 150px;
   transition: width 1s, background-color 1s, height 1s;
 }
 
 .btn_register:hover {
   background-color: #fff;
   color: deepskyblue;
-  width: 500px;
+  width: 240px;
   height: 100px;
 }
 
-.register_position{
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.register_positionStart{
+  padding-bottom: 35px;
+  padding-top: 25px;
 }
 
 /* Intro */
@@ -124,13 +133,7 @@
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  position: center;
-  margin: auto;
-  width: 60%;
-  height: 550px;
-  line-height: 30px;
-  font-size: 20px;
-  align-items: center;
+
 
 
 }
@@ -139,57 +142,38 @@
   transform: translate(-50%, -50%) scale(1.5);
   background-color: white;
   opacity: 5;
+
 }
 
 .introS{
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 350px;
+  padding-bottom: 350px;
+  line-height: 1.7;
+  width: 60%;
+  margin: auto ;
+  height: 500px;
 }
 
 .intro__innerStart {
-  padding: 100px;
+
 
 }
 
 .intro__suptitleStart{
-  letter-spacing: 3px;
-  font-size: 40px;
-
-}
-
-.intro__titleStart {
-  color: #fff;
-  font-size: 70px;
-  font-weight: 550;
-  text-transform: uppercase;
-  line-height: 1;
-  margin: 0 auto;
-}
-
-
-
-
-
-
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
+  font-family: Arial, sans-serif;
+  font-size: 35px;
+  font-style: normal;
   font-weight: bold;
-  color: #2c3e50;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #ffffff;
+  padding-top: 25px;
+
+
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
--->
+

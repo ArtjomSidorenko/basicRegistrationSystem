@@ -3,7 +3,9 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import register from '../views/register.vue'
 import login from '../views/login.vue'
-import startPage from "../views/startPage.vue";
+import startPage from "../views/startPage.vue"
+import loginSuccess from "../views/loginSuccess"
+import registerSuccess from "../views/registerSuccess";
 
 
 Vue.use(VueRouter)
@@ -28,6 +30,16 @@ const routes = [
     path: '/login',
     name: 'login',
     component: login
+  },
+  {
+    path: "/loginSuccess",
+    name: "loginSuccess",
+    component: loginSuccess
+  },
+  {
+    path: "/registerSuccess",
+    name: "registerSuccess",
+    component: registerSuccess
   },
   {
     path: '/about',

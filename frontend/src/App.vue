@@ -79,11 +79,12 @@ link.addEventListener("mouseleave", () =>{
 .link-grow {
   transform:  scale(2);
   background: white/*#5f2eea*/;
+  cursor: none;
 }
 
 .hovered-link{
   color: black;
-
+  cursor: none;
 }
 
 /*body*/
