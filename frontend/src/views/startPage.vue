@@ -25,6 +25,12 @@
               <input class="btn_register" type="submit" name="" value="Register"></a>
           </div>
 
+          <div class="button_to_about_start " align="right">
+            <a @click="$router.push('/about')">
+              <input class="btn_of_about_start" type="submit" name="" value="About">
+            </a>
+          </div>
+
         </div>
       </div>
     </div>
@@ -38,7 +44,7 @@
 
 </script>
 <style>
-/* Button */
+/* Buttons */
 .btn_login {
 
   display: inline-block;
@@ -123,6 +129,41 @@
 .register_positionStart{
   padding-bottom: 35px;
   padding-top: 25px;
+}
+
+
+
+.btn_of_about_start{
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+
+  transition: color .1s linear;
+  border: 0;
+  background: none;
+
+}
+.btn_of_about_start:after{
+  background-color: #fce38a;
+  opacity: 0;
+
+  transition: opacity .1s linear;
+  color: deepskyblue;
+}
+
+.btn_of_about_start:hover{
+  text-decoration: underline;
+  color: deepskyblue;
+
+}
+.btn_of_about_start:hover:after,
+.btn_of_about_start:after {
+  opacity: 1;
+}
+
+.button_to_about_start{
+  padding-right: 15px;
+  padding-bottom: 5px;
 }
 
 /* Intro */

@@ -9,9 +9,23 @@
     <div class="intro" >
       <div class="container" align="center" >
         <div class="intro__inner" align="center">
+
           <h2 class="intro__suptitle" style="color: white">Hello again!</h2>
+
           <h1 class="intro__title" align="center">Welcome to the hub</h1>
-          <div class="button_padding"> <a @click="$router.push('/startPage')"> <input class="btn" type="submit" name="" value="Get Started"></a></div>
+
+          <div class="button_padding">
+            <a @click="$router.push('/startPage')">
+              <input class="btn" type="submit" name="" value="Get Started">
+            </a>
+          </div>
+
+          <div class="button_to_about " align="right">
+            <a @click="$router.push('/about')">
+              <input class="btn_of_about" type="submit" name="" value="About">
+            </a>
+          </div>
+
         </div>
       </div>
     </div>
@@ -27,7 +41,7 @@
 </script>
 <style>
 
-/* Button */
+/* Buttons */
 .btn {
   display: inline-block;
   vertical-align: top;
@@ -61,10 +75,46 @@
   color: deepskyblue;
   width: 240px;
 }
+
 .button_padding{
   padding-bottom: 35px;
 }
+
+.btn_of_about{
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+
+  transition: color .1s linear;
+  border: 0;
+  background: none;
+
+}
+.btn_of_about:after{
+  background-color: #fce38a;
+  opacity: 0;
+
+  transition: opacity .1s linear;
+  color: deepskyblue;
+}
+
+.btn_of_about:hover{
+  text-decoration: underline;
+  color: deepskyblue;
+
+}
+.btn_of_about:hover:after,
+.btn_of_about:after {
+  opacity: 1;
+}
+
+.button_to_about{
+padding-right: 15px;
+  padding-bottom: 5px;
+}
+
 /* Container */
+
 .container {
   background: rgba(255, 255, 255, 0.25);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
