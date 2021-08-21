@@ -1,11 +1,10 @@
-
 <template>
   <div id="app">
-    <!--    &lt;!&ndash;<div id="nav">
-          <router-link to="/">Home</router-link> |
-          <router-link to="/about">About</router-link>
-        </div>
-        <router-view/>&ndash;&gt;-->
+    <!— &lt;!&ndash;<div id="nav">
+    <router-link to="/">Home</router-link> |
+    <router-link to="/about">About</router-link>
+  </div>
+    <router-view/>&ndash;&gt;-->
 
     <div class="introS" >
 
@@ -35,12 +34,9 @@
       </div>
     </div>
 
-
-
   </div>
 </template>
 <script>
-
 
 </script>
 <style>
@@ -55,7 +51,6 @@
   text-align: center;
 
   background: none;
-
 
   border: 3px solid #fff;
   border-radius: 24px;
@@ -72,7 +67,6 @@
   width: 150px;
   transition: width 1s, background-color 1s, height 1s;
 
-
 }
 
 .btn_login:hover {
@@ -80,7 +74,6 @@
   color: deepskyblue;
   width: 240px;
   height: 100px;
-
 
 }
 
@@ -94,14 +87,10 @@
   display: inline-block;
   vertical-align: top;
 
-
-
-
   margin: auto;
   text-align: center;
 
   background: none;
-
 
   border: 3px solid #fff;
   border-radius: 24px;
@@ -122,7 +111,7 @@
 .btn_register:hover {
   background-color: #fff;
   color: deepskyblue;
-  width: 240px;
+  width: 200px;
   height: 100px;
 }
 
@@ -130,8 +119,6 @@
   padding-bottom: 35px;
   padding-top: 25px;
 }
-
-
 
 .btn_of_about_start{
   font-size: 20px;
@@ -141,12 +128,13 @@
   transition: color .1s linear;
   border: 0;
   background: none;
+  cursor: none;
 
 }
 .btn_of_about_start:after{
   background-color: #fce38a;
   opacity: 0;
-
+  cursor: none;
   transition: opacity .1s linear;
   color: deepskyblue;
 }
@@ -154,11 +142,13 @@
 .btn_of_about_start:hover{
   text-decoration: underline;
   color: deepskyblue;
+  cursor: none;
 
 }
 .btn_of_about_start:hover:after,
 .btn_of_about_start:after {
   opacity: 1;
+  cursor: none;
 }
 
 .button_to_about_start{
@@ -174,8 +164,6 @@
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
-
-
 
 }
 
@@ -200,7 +188,6 @@
 
 .intro__innerStart {
 
-
 }
 
 .intro__suptitleStart{
@@ -213,8 +200,6 @@
   color: #ffffff;
   padding-top: 25px;
 
-
 }
 
 </style>
-

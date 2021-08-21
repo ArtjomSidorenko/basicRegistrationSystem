@@ -1,19 +1,15 @@
 <template>
   <div id="app">
     <!--<div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <router-link to="/">Home</router-link> |
+    <router-link to="/about">About</router-link>
     </div>-->
 
     <router-view/>
 
-
-
-
     <div class="cursor"></div>
 
-
-    </div>
+  </div>
 
 </template>
 <script>
@@ -31,13 +27,12 @@ export default {
       mouseCursor.style.left = e.pageX + "px";
     }
     navLinks.forEach(link =>{
-link.addEventListener("mouseleave", () =>{
-  mouseCursor.classList.remove("link-grow");
-  link.classList.remove("hovered-link")
-});
+      link.addEventListener("mouseleave", () =>{
+        mouseCursor.classList.remove("link-grow");
+        link.classList.remove("hovered-link")
+      });
 
-
-});
+    });
     navLinks.forEach(link =>{
       link.addEventListener("mouseover", () =>{
         mouseCursor.classList.add("link-grow");
@@ -46,6 +41,7 @@ link.addEventListener("mouseleave", () =>{
 
     });
 
+    /*test*/
   }
 }
 </script>
@@ -70,20 +66,19 @@ link.addEventListener("mouseleave", () =>{
   transition: all 0.1s ease;
   transition-property: background, transform;
   transform-origin: 100% 100%;
-  z-index: -1;
+  z-index: 1;
   backdrop-filter: blur(10px);
 
 }
 
-
 .link-grow {
-  transform:  scale(2);
+  transform: scale(1.5);
   background: white/*#5f2eea*/;
   cursor: none;
 }
 
 .hovered-link{
-  color: black;
+  color: blue;
   cursor: none;
 }
 
@@ -127,27 +122,4 @@ body {
   border-radius: 10px;
 }
 
-
-
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>

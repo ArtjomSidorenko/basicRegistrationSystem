@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <!--<div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <router-link to="/">Home</router-link> |
+    <router-link to="/about">About</router-link>
     </div>
     <router-view/>-->
 
@@ -30,13 +30,9 @@
       </div>
     </div>
 
-
-
-
   </div>
 </template>
 <script>
-
 
 </script>
 <style>
@@ -52,7 +48,6 @@
 
   background: none;
 
-
   border: 3px solid #fff;
   border-radius: 24px;
 
@@ -64,7 +59,6 @@
   text-decoration: none;
   outline: none;
 
-
   height: 60px;
   width: 150px;
   transition: width 1s, background-color 1s;
@@ -73,7 +67,7 @@
 .btn:hover {
   background-color: #fff;
   color: deepskyblue;
-  width: 240px;
+  width: 200px;
 }
 
 .button_padding{
@@ -88,12 +82,13 @@
   transition: color .1s linear;
   border: 0;
   background: none;
+  cursor: none;
 
 }
 .btn_of_about:after{
   background-color: #fce38a;
   opacity: 0;
-
+  cursor: none;
   transition: opacity .1s linear;
   color: deepskyblue;
 }
@@ -101,15 +96,16 @@
 .btn_of_about:hover{
   text-decoration: underline;
   color: deepskyblue;
-
+  cursor: none;
 }
 .btn_of_about:hover:after,
 .btn_of_about:after {
   opacity: 1;
+  cursor: none;
 }
 
 .button_to_about{
-padding-right: 15px;
+  padding-right: 15px;
   padding-bottom: 5px;
 }
 
@@ -130,7 +126,6 @@ padding-right: 15px;
   opacity: .5;
 }
 
-
 /*Intro*/
 
 .intro {
@@ -147,8 +142,6 @@ padding-right: 15px;
 }
 .intro__inner {
 
-
-
 }
 .intro__title {
   font-family: Arial, sans-serif;
@@ -159,9 +152,6 @@ padding-right: 15px;
   text-transform: uppercase;
   color: #ffffff;
 
-
-
-
 }
 .intro__suptitle {
   text-decoration: underline;
@@ -170,6 +160,5 @@ padding-right: 15px;
   font-size: 25px;
   padding: 20px;
 }
-
 
 </style>

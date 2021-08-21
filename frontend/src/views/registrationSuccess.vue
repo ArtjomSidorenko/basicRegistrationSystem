@@ -9,9 +9,20 @@
     <div class="introAbout" >
       <div class="containerAbout" align="center" >
         <div class="intro__innerAbout" align="center">
-          <h1 class="intro__titleAbout" align="center">About!</h1>
-          <h1 class="intro__suptitleAbout" style="color: white">I am Artjom and so on. Dream up the text.</h1>
-          <div class="button_paddingAbout"> <a @click="$router.push('/')"> <input class="btnAbout" type="submit" name="" value="Home"></a></div>
+
+          <h1 class="intro__titleAbout" align="center">You are registered!</h1>
+
+          <div class="button_paddingAbout">
+            <a @click="$router.push('/login')">
+              <input class="btnAbout" type="submit" name="" value="Login">
+            </a>
+          </div>
+
+          <div class="button_to_about_start " align="right">
+            <a @click="$router.push('/about')">
+              <input class="btn_of_about_start" type="submit" name="" value="About">
+            </a>
+          </div>
 
         </div>
       </div>
@@ -25,6 +36,41 @@
 <style>
 
 /* Button */
+
+.btn_of_about_start{
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+  cursor: none;
+  transition: color .1s linear;
+  border: 0;
+  background: none;
+
+}
+.btn_of_about_start:after{
+  background-color: #fce38a;
+  opacity: 0;
+  cursor: none;
+  transition: opacity .1s linear;
+  color: deepskyblue;
+}
+
+.btn_of_about_start:hover{
+  text-decoration: underline;
+  color: deepskyblue;
+  cursor: none;
+}
+.btn_of_about_start:hover:after,
+.btn_of_about_start:after {
+  opacity: 1;
+  cursor: none;
+}
+
+.button_to_about_start{
+  padding-right: 15px;
+  padding-bottom: 5px;
+}
+
 .btnAbout {
   display: inline-block;
   vertical-align: top;
@@ -53,7 +99,7 @@
 .btnAbout:hover {
   background-color: #fff;
   color: deepskyblue;
-  width: 200px;
+  width: 240px;
 
 }
 .button_paddingAbout{
@@ -103,16 +149,6 @@
   padding-top: 15px;
   color: white;
 
-}
-.intro__suptitleAbout {
-  font-family: Arial, sans-serif;
-  font-size: 35px;
-  font-style: normal;
-  font-weight: bold;
-  text-decoration: none;
-  text-transform: none;
-  color: #ffffff;
-  padding-top: 5px;
 }
 
 </style>
