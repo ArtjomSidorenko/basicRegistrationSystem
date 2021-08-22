@@ -4,8 +4,9 @@ import Home from '../views/Home.vue'
 import register from '../views/register.vue'
 import login from '../views/login.vue'
 import startPage from "../views/startPage.vue"
-import loginSuccess from "../views/loginSuccess"
-import registerSuccess from "../views/registrationSuccess";
+import loginSuccess from "../views/loginSuccess.vue"
+import adminData from "../views/adminData.vue"
+import registerSuccess from "../views/registrationSuccess.vue";
 
 Vue.use(VueRouter)
 
@@ -39,6 +40,11 @@ const routes = [
     path: "/registerSuccess",
     name: "registerSuccess",
     component: registerSuccess
+  },
+  {
+    path: "/adminData",
+    name: "adminData",
+    component: adminData
   },
   {
     path: '/about',
