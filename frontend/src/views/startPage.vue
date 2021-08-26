@@ -8,7 +8,7 @@
       <div class="containerStart" align="center">
         <div class="intro__innerStart" align="center">
 
-          <h2 class="intro__suptitleStart" style="color: white" align="center">Hello again!</h2>
+          <h2 class="intro__suptitleStarts" style="color: white" align="center">Hello again!</h2>
 
           <div class="login_positionStart">
             <a @click="$router.push('/login')">
@@ -187,15 +187,13 @@
 
 }
 
-.intro__suptitleStart{
-  font-family: Arial, sans-serif;
+.intro__suptitleStarts{
+  text-decoration: underline;
+  font-family: "Comic Sans MS";
+  font-style: italic;
   font-size: 35px;
-  font-style: normal;
-  font-weight: bold;
-  text-decoration: none;
-  text-transform: uppercase;
-  color: #ffffff;
   padding-top: 25px;
+  color: white;
 
 }
 
