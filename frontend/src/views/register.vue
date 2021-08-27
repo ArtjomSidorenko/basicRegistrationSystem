@@ -7,18 +7,18 @@
         <div class="intro__inner" align="center">
           <h2 class="intro__suptitle" style="color: white">Register!</h2>
 
-          <div class="questions">
+          <div class="questions" @keyup.enter="addUser" @submit="addUser">
 
-            <div class="email_padding"> <input class="email" type="email" name="" placeholder="EMAIL"></div>
+            <div class="email_padding"> <input class="email" type="email" name="" placeholder="EMAIL" v-model="email"></div>
 
-            <div class="name_padding"> <input class="name" type="text" name="" placeholder="NAME"></div>
+            <div class="name_padding"> <input class="name" type="text" name="" placeholder="NAME" v-model="name"></div>
 
-            <div class="surname_padding"> <input class="surname" type="text" name="" placeholder="SURNAME"></div>
+            <div class="surname_padding"> <input class="surname" type="text" name="" placeholder="SURNAME" v-model="surname"></div>
 
             <div class="pass_padding">
 
-              <div class="control is-expanded">
-                <input v-if="showPassword" type="text" class="password" v-model="password" placeholder="PASSWORD"/>
+              <div class="control is-expanded" v-model="password">
+                <input v-if="showPassword" type="text" class="password" v-model="password" placeholder="PASSWORD" />
                 <input v-else type="password" class="password" v-model="password" placeholder="PASSWORD">
               </div>
 
@@ -26,23 +26,26 @@
 
             <div class="control">
               <button class="button" @click="toggleShow">
-<span>
-<i class='i_position' :class="{ 'fa fa-eye': showPassword, 'fa fa-eye-slash': !showPassword }"></i>
-</span>
+
+                <span>
+
+                  <i class='i_position' :class="{ 'fa fa-eye': showPassword, 'fa fa-eye-slash': !showPassword }"></i>
+
+                </span>
               </button>
             </div>
 
           </div>
 
           <div class="button_padding">
-            <a @click="$router.push('/startPage')">
-              <input class="btn" type="submit" name="" value="Submit">
+            <a @click="$router.push('/registerSuccess')">
+            <button class="btn" type="submit" name="" value="ADD" v-on:click="addUser">Submit</button>
             </a>
           </div>
 
           <div class="button_to_about " align="right">
             <a @click="$router.push('/about')">
-              <input class="btn_of_about" type="submit" name="" value="About">
+              <input class="btn_of_about" type="button" name="" value="About">
             </a>
           </div>
 
@@ -53,20 +56,63 @@
   </div>
 </template>
 <script>
+import axios from "axios";
 
 export default {
+  name: "register",
   data() {
     return {
       showPassword: false,
       password: null,
 
+      email: "",
+      idForList: 3,
+      name: "",
+      surname: "",
+
     };
+  },
+  mounted() {
+    this.getUserData();
   },
   methods: {
     toggleShow() {
       this.showPassword = !this.showPassword;
+    },
+    addUser() {
+      if (this.email.trim() == 0) {
+        return;
+      }
+
+      axios.post("http://localhost:3333/api/register", {
+        email: this.email,
+        name: this.name,
+        surname: this.surname,
+        password: this.password
+      })
+          .then(() => {
+            this.getUserData()
+          });
+
+      this.email = "";
+      this.name = "";
+          this.surname = "";
+          this.password= "";
+
+    },
+
+    getUserData() {
+      axios.get("http://localhost:3333/api/system").then((response) => {
+        this.registrationSystems = response.data;
+
+        this.hasLoaded = true;
+      });
+    },
+    save: function () {
+
     }
-  }
+
+    }
 };
 
 </script>
@@ -181,7 +227,7 @@ export default {
 }
 
 .button_to_about{
-  padding-right: 15px;
+
   padding-bottom: 5px;
 }
 

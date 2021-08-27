@@ -6,6 +6,7 @@ import login from '../views/login.vue'
 import startPage from "../views/startPage.vue"
 import loginSuccess from "../views/loginSuccess.vue"
 import adminData from "../views/adminData.vue"
+import pageLoader from "../components/PageLoader.vue"
 import registerSuccess from "../views/registrationSuccess.vue";
 
 Vue.use(VueRouter)
@@ -45,6 +46,11 @@ const routes = [
     path: "/adminData",
     name: "adminData",
     component: adminData
+  },
+  {
+    path: "/pageLoader",
+    name: "pageLoader",
+    component: pageLoader
   },
   {
     path: '/about',

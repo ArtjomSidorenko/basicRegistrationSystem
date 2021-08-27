@@ -5,16 +5,18 @@
 
     <div class="cursor"></div>
 
-    <loader object="#ff9633" color1="#ffffff" color2="#17fd3d" size="5" speed="2" bg="auto" objectbg="#999793" opacity="80" name="circular"></loader>
+
+    <preloader />
 
   </div>
 
 </template>
 <script>
 
+import Preloader from "./components/PageLoader";
+
 export default {
-
-
+  components: {Preloader},
   mounted() {
 
     let mouseCursor = document.querySelector(".cursor");

@@ -16,15 +16,22 @@
           <div class="wrapper">
         <table class="user_list"  border="1">
           <tr>
-            <td align="center">gmail</td>
-
+            <td align="center">email</td>
             <td align="center">name</td>
-
             <td align="center">surname</td>
-
             <td align="center">password</td>
+            <td align="center">erase</td>
+          </tr>
+          <tr v-for="(adminData) in registrationSystems" :key="adminData.id">
+            <td align="center"><span>{{ adminData.email }}</span></td>
 
-            <td align="center">x</td>
+            <td align="center"><span>{{ adminData.name }}</span></td>
+
+            <td align="center"><span>{{ adminData.surname }}</span></td>
+
+            <td align="center"><span>{{ adminData.password }}</span></td>
+
+            <td align="center"><div class="remove-item" @click="removeUser(adminData)">&times;</div></td>
           </tr>
         </table>
           </div>
@@ -40,9 +47,53 @@
     </div>
   </div>
 </template>
-<script>
 
+<script>
+import axios from "axios";
+
+export default {
+  name: "registrationSystem",
+
+  data() {
+
+    return {
+      registrationSystems: [],
+      persons: [],
+      hasLoaded: false,
+    };
+
+  },
+
+  mounted() {
+    this.getUserData();
+  },
+  methods: {
+
+    removeUser(adminData) {
+
+      console.log(adminData);
+
+
+      axios.post("http://localhost:3333/api/data/deleting", {
+        removing: adminData.id
+      })
+          .then(() => {
+            this.getUserData()
+          });
+
+    },
+
+    getUserData() {
+      axios.get("http://localhost:3333/api/system").then((response) => {
+        this.registrationSystems = response.data;
+
+        this.hasLoaded = true;
+      });
+    }
+  }
+}
 </script>
+
 <style>
 
 

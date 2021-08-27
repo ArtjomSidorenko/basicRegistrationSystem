@@ -46,27 +46,32 @@ async function login(user_data) {
 }
 
 
-//async function deleting(clientList) {
-  //  const result = await db.query(
-    //    `DELETE FROM summer_test.clientList WHERE id = ?;`,
-   //     [clientList.removing]
-  //  );
+async function deleting(registrationSystem) {
+    const result = await db.query(
+        `DELETE FROM basic_registration_system.user_data WHERE id = ?;`,
+        [registrationSystem.removing]
+    );
 
- //   let message = 'Error in saving todo';
+    let message = 'Error in saving todo';
 
-  //  if (result.affectedRows) {
-//        message = 'Saved successfully';
-   // }
 
-   // return {message};
-//}
+
+    if (result.affectedRows) {
+        message = 'Saved successfully';
+    }
+
+    return {message};
+}
+
+
+
 
 // SQL: DELETE FROM summer_test.todo_tasks WHERE id = 1;
 
 
 module.exports = {
     getUsers,
-   login,
+    login,
     register,
-
+    deleting
 }
