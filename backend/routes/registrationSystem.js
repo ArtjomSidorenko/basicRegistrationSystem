@@ -3,7 +3,6 @@ const express = require('express');
 const router = express.Router();
 const registrationSystem = require('../services/system');
 
-/* GET todos. */
 
 router.post('/login', async function(req, res, next) {
     console.log('POST request /api/basicRegistrationSystem/login received with parameters: ' + JSON.stringify(req.body));
@@ -11,12 +10,15 @@ router.post('/login', async function(req, res, next) {
     try {
         const result = await registrationSystem.login(req.body);
 
+
         res.json(result);
     } catch (err) {
         console.error(`Error while getting programming languages `, err.message);
         next(err);
     }
 });
+
+
 
 router.post('/register', async function(req, res, next) {
     console.log('POST request /api/basicRegistrationSystem/register received with parameters: ' + JSON.stringify(req.body));
