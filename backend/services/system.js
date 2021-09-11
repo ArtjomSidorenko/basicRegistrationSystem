@@ -10,7 +10,7 @@ async function getUsers() {
 
     return data;
 }
-4
+
 
 
 async function register(user_data) {
@@ -36,8 +36,10 @@ async function login(loginRequest) {
     const rows = await db.query(
         `SELECT user_data.email, user_data.password
 
-         FROM basic_registration_system.user_data where user_data.password = ? and user_data.email = ?;`,
-            [loginRequest.password, loginRequest.email]
+         FROM basic_registration_system.user_data
+         where user_data.password = ?
+           and user_data.email = ?;`,
+        [loginRequest.password, loginRequest.email]
     );
 
 
@@ -52,10 +54,41 @@ async function login(loginRequest) {
             is_admin: false
         }
     } else {
+        await loginAdmin()
+    }
+
+    const data = helper.emptyOrRows(rows);
+
+    return data;
+}
+
+async function loginAdmin(loginAdminRequest) {
+
+    const rows = await db.query(
+        `SELECT admin_data.email, admin_data.password
+
+         FROM basic_registration_system.admin_data
+         where admin_data.password = ?
+           and admin_data.email = ?;`,
+        [loginAdminRequest.password, loginAdminRequest.email]
+    );
+
+
+    console.log('rows: ' + JSON.stringify(rows));
+
+    const user = rows[0];
+
+    if (user.password === loginAdminRequest.password && user.email === loginAdminRequest.email) {
+        return {
+            message: "logged in",
+            is_successful: true,
+            is_admin: true
+        }
+    } else {
 
 
         return {
-            message: "error",
+            message: "Login NOK, invalid password or email",
             is_successful: false,
             is_admin: false
         }
@@ -64,8 +97,7 @@ async function login(loginRequest) {
     const data = helper.emptyOrRows(rows);
 
     return data;
-    }
-
+}
 
 
 
@@ -97,5 +129,6 @@ module.exports = {
     getUsers,
     login,
     register,
-    deleting
+    deleting,
+    loginAdmin
 }
