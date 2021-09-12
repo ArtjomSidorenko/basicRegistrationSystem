@@ -12,12 +12,11 @@ async function getUsers() {
 }
 
 
-
 async function register(user_data) {
     console.log(user_data)
     const result = await db.query(
         `INSERT INTO basic_registration_system.user_data (email, name, surname, password)
-         VALUES (?,?,?,?)`,
+         VALUES (?, ?, ?, ?)`,
 
         [user_data.email, user_data.name, user_data.surname, user_data.password]
     );
@@ -34,82 +33,97 @@ async function register(user_data) {
 async function login(loginRequest) {
 
     const rows = await db.query(
-        `SELECT user_data.email, user_data.password
+        `SELECT user_data.email
 
          FROM basic_registration_system.user_data
-         where user_data.password = ?
-           and user_data.email = ?;`,
-        [loginRequest.password, loginRequest.email]
+         where user_data.email = ? LIMIT 1;`,
+        [loginRequest.email]
     );
 
 
     console.log('rows: ' + JSON.stringify(rows));
 
-    const user = rows[0];
 
-    if (user.password === loginRequest.password && user.email === loginRequest.email) {
-        return {
-            message: "logged in",
-            is_successful: true,
-            is_admin: false
-        }
-    } else {
+    if (rows.length === 0) {
         await loginAdmin()
-    }
+    } else {
+        const user = rows[0];
+        if (user.password === loginRequest.password) {
+            return {
+                message: "You are logged in",
+                is_successful: true,
+                is_admin: false
+            }
+        }else{
+               return {
+                   message: "password is incorrect",
+                   is_successful: true,
+                   is_admin: false
+               }
+            }
+        }
+
 
     const data = helper.emptyOrRows(rows);
 
     return data;
 }
 
-async function loginAdmin(loginAdminRequest) {
+async function loginAdmin(loginRequest) {
 
     const rows = await db.query(
         `SELECT admin_data.email, admin_data.password
 
          FROM basic_registration_system.admin_data
-         where admin_data.password = ?
-           and admin_data.email = ?;`,
-        [loginAdminRequest.password, loginAdminRequest.email]
+         where  admin_data.email = ?;`,
+        [ loginRequest.email]
     );
 
 
     console.log('rows: ' + JSON.stringify(rows));
 
-    const user = rows[0];
-
-    if (user.password === loginAdminRequest.password && user.email === loginAdminRequest.email) {
-        return {
-            message: "logged in",
-            is_successful: true,
-            is_admin: true
-        }
-    } else {
 
 
+    if (rows.length === 0) {
         return {
             message: "Login NOK, invalid password or email",
             is_successful: false,
             is_admin: false
         }
-    }
-
+    } else {
+        const user = rows[0];
+        if (user.password === loginRequest.password) {
+            return {
+                message: "logged in as admin",
+                is_successful: true,
+                is_admin: true
+            }
+        }else{
+            return {
+                message: "Login NOK, invalid password or email",
+                is_successful: false,
+                is_admin: false
+            }
+            }
+        }
     const data = helper.emptyOrRows(rows);
 
     return data;
 }
+
 
 
 
 
 async function deleting(registrationSystem) {
     const result = await db.query(
-        `DELETE FROM basic_registration_system.user_data WHERE id = ?;`,
+        `DELETE
+         FROM basic_registration_system.user_data
+         WHERE id = ?;`,
         [registrationSystem.removing]
     );
 
     let message = 'Error in saving todo';
-
 
 
     if (result.affectedRows) {
@@ -118,8 +132,6 @@ async function deleting(registrationSystem) {
 
     return {message};
 }
-
-
 
 
 // SQL: DELETE FROM summer_test.todo_tasks WHERE id = 1;
