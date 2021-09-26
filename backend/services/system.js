@@ -48,7 +48,8 @@ async function login(loginRequest) {
         await loginAdmin()
     } else {
         const user = rows[0];
-        if (user.password === loginRequest.password) {
+        if (user.password === loginRequest.password)
+        {
             return {
                 message: "You are logged in",
                 is_successful: true,
@@ -57,7 +58,7 @@ async function login(loginRequest) {
         }else{
                return {
                    message: "password is incorrect",
-                   is_successful: true,
+                   is_successful: false,
                    is_admin: false
                }
             }
@@ -72,7 +73,7 @@ async function login(loginRequest) {
 async function loginAdmin(loginRequest) {
 
     const rows = await db.query(
-        `SELECT admin_data.email, admin_data.password
+        `SELECT admin_data.email
 
          FROM basic_registration_system.admin_data
          where  admin_data.email = ?;`,
@@ -91,8 +92,8 @@ async function loginAdmin(loginRequest) {
             is_admin: false
         }
     } else {
-        const user = rows[0];
-        if (user.password === loginRequest.password) {
+        const admin = rows[0];
+        if (admin.password === loginRequest.password) {
             return {
                 message: "logged in as admin",
                 is_successful: true,
