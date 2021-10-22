@@ -50,6 +50,9 @@ export default {
 }
 </script>
 <style>
+.template{
+  background-color: #5f2eea;
+}
 
 /*select */
 ::selection {

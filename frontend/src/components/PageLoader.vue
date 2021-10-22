@@ -2,7 +2,7 @@
 
   <transition name="fade">
     <div v-if="show" class="preloader">
-      <p>hello</p>
+      <p>Wait a little bit!</p>
       <div class="circles">
 
         <div class="circle"></div>
@@ -67,7 +67,7 @@ p {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 24px;
   letter-spacing: 0px;
-  word-spacing: -5px;
+  /*word-spacing: -5px;*/
   font-weight: 700;
   text-decoration: none solid rgb(68, 68, 68);
   font-style: normal;

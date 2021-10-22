@@ -26,11 +26,8 @@
 
             <div class="control">
               <button class="button" @click="toggleShow">
-
                 <span>
-
                   <i class='i_position' :class="{ 'fa fa-eye': showPassword, 'fa fa-eye-slash': !showPassword }"></i>
-
                 </span>
               </button>
             </div>
@@ -102,7 +99,7 @@ export default {
     },
 
     getUserData() {
-      axios.get("http://localhost:3333/api/system").then((response) => {
+      axios.get("http://localhost:3333/api/users").then((response) => {
         this.registrationSystems = response.data;
 
         this.hasLoaded = true;

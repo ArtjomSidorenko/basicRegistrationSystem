@@ -84,7 +84,7 @@ export default {
     },
 
     getUserData() {
-      axios.get("http://localhost:3333/api/system").then((response) => {
+      axios.get("http://localhost:3333/api/users").then((response) => {
         this.registrationSystems = response.data;
 
         this.hasLoaded = true;
@@ -197,14 +197,23 @@ export default {
 
 
 .user_list{
-
-
-}
-
-.wrapper {
   overflow: auto;
   border-radius: 10px;
   border: 3px solid white;
+
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-style: hidden;
+
+  margin: auto;
+  width:70%;
+  max-width: 70%;
+}
+
+.wrapper {
+ /* overflow: auto;
+  border-radius: 10px;
+  border: 3px solid white;*/
 }
 
 table {

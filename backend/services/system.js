@@ -33,10 +33,10 @@ async function register(user_data) {
 async function login(loginRequest) {
 
     const rows = await db.query(
-        `SELECT user_data.email
-
+        `SELECT *
          FROM basic_registration_system.user_data
-         where user_data.email = ? LIMIT 1;`,
+         where user_data.email = ?
+         LIMIT 1;`,
         [loginRequest.email]
     );
 
@@ -45,44 +45,38 @@ async function login(loginRequest) {
 
 
     if (rows.length === 0) {
-        await loginAdmin()
+        const result = await loginAdmin(loginRequest)
+        console.log('loginAdmin() result: ' + JSON.stringify(result))
+        return result
     } else {
         const user = rows[0];
-        if (user.password === loginRequest.password)
-        {
+        if (user.password === loginRequest.password) {
             return {
                 message: "You are logged in",
                 is_successful: true,
                 is_admin: false
             }
-        }else{
-               return {
-                   message: "password is incorrect",
-                   is_successful: false,
-                   is_admin: false
-               }
+        } else {
+            return {
+                message: "password is incorrect",
+                is_successful: false,
+                is_admin: false
             }
         }
-
-
-    const data = helper.emptyOrRows(rows);
-
-    return data;
+    }
 }
 
 async function loginAdmin(loginRequest) {
 
     const rows = await db.query(
-        `SELECT admin_data.email
-
+        `SELECT *
          FROM basic_registration_system.admin_data
-         where  admin_data.email = ?;`,
-        [ loginRequest.email]
+         where admin_data.email = ?;`,
+        [loginRequest.email]
     );
 
 
     console.log('rows: ' + JSON.stringify(rows));
-
 
 
     if (rows.length === 0) {
@@ -99,19 +93,15 @@ async function loginAdmin(loginRequest) {
                 is_successful: true,
                 is_admin: true
             }
-        }else{
+        } else {
             return {
                 message: "Login NOK, invalid password or email",
                 is_successful: false,
                 is_admin: false
             }
-            }
         }
-    const data = helper.emptyOrRows(rows);
-
-    return data;
+    }
 }
-
 
 
 

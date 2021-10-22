@@ -8,7 +8,7 @@ router.post('/login', async function(req, res, next) {
     console.log('POST request /api/basicRegistrationSystem/login received with parameters: ' + JSON.stringify(req.body));
 
     try {
-        const result = await registrationSystem.login(req.body);
+        const result = await registrationSystem.login(req.body) ;
 
 
         res.json(result);
@@ -46,7 +46,7 @@ router.post('/data/deleting', async function(req, res, next) {
     }
 });
 
-router.get('/system', async function(req, res, next) {
+router.get('/users', async function(req, res, next) {
     console.log('GET request /api/gettingRegistrationSystem received');
 
     try {

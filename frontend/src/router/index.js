@@ -7,7 +7,9 @@ import startPage from "../views/startPage.vue"
 import loginSuccess from "../views/loginSuccess.vue"
 import adminData from "../views/adminData.vue"
 import pageLoader from "../components/PageLoader.vue"
+import loginFailed from "../views/loginFailed.vue"
 import registerSuccess from "../views/registrationSuccess.vue";
+
 
 Vue.use(VueRouter)
 
@@ -51,6 +53,11 @@ const routes = [
     path: "/pageLoader",
     name: "pageLoader",
     component: pageLoader
+  },
+  {
+    path: "/loginFailed",
+    name: "loginFailed",
+    component: loginFailed
   },
   {
     path: '/about',
