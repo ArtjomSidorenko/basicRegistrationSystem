@@ -34,7 +34,7 @@ router.post('/register', async function(req, res, next) {
 });
 
 router.post('/data/deleting', async function(req, res, next) {
-    console.log('POST request /api/todo/deleting received with parameters: ' + JSON.stringify(req.body));
+    console.log('POST request /api/basicRegistrationSystem/deleting received with parameters: ' + JSON.stringify(req.body));
 
     try {
         const result1 = await registrationSystem.deleting(req.body);

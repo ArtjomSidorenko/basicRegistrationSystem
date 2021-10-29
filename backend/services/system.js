@@ -1,5 +1,8 @@
 const db = require('./db');
 const helper = require('../helper');
+const bcrypt = require('bcrypt');
+
+
 
 async function getUsers() {
     const rows = await db.query(
@@ -12,14 +15,20 @@ async function getUsers() {
 }
 
 
+
+
 async function register(user_data) {
-    console.log(user_data)
+    let hash = bcrypt.hashSync(user_data.password, 10);
+
+
     const result = await db.query(
         `INSERT INTO basic_registration_system.user_data (email, name, surname, password)
          VALUES (?, ?, ?, ?)`,
 
-        [user_data.email, user_data.name, user_data.surname, user_data.password]
+        [user_data.email, user_data.name, user_data.surname, hash]
     );
+
+
 
     let message = 'Error in saving todo';
 
@@ -32,6 +41,7 @@ async function register(user_data) {
 
 async function login(loginRequest) {
 
+
     const rows = await db.query(
         `SELECT *
          FROM basic_registration_system.user_data
@@ -41,16 +51,13 @@ async function login(loginRequest) {
     );
 
 
-    console.log('rows: ' + JSON.stringify(rows));
-
-
     if (rows.length === 0) {
         const result = await loginAdmin(loginRequest)
-        console.log('loginAdmin() result: ' + JSON.stringify(result))
         return result
     } else {
         const user = rows[0];
-        if (user.password === loginRequest.password) {
+
+        if (bcrypt.compareSync(loginRequest.password, user.password)) {
             return {
                 message: "You are logged in",
                 is_successful: true,
@@ -64,7 +71,10 @@ async function login(loginRequest) {
             }
         }
     }
+
+
 }
+
 
 async function loginAdmin(loginRequest) {
 
@@ -76,8 +86,6 @@ async function loginAdmin(loginRequest) {
     );
 
 
-    console.log('rows: ' + JSON.stringify(rows));
-
 
     if (rows.length === 0) {
         return {
@@ -87,7 +95,9 @@ async function loginAdmin(loginRequest) {
         }
     } else {
         const admin = rows[0];
-        if (admin.password === loginRequest.password) {
+
+
+        if (bcrypt.compareSync(loginRequest.password, admin.password)) {
             return {
                 message: "logged in as admin",
                 is_successful: true,
@@ -125,7 +135,6 @@ async function deleting(registrationSystem) {
 }
 
 
-// SQL: DELETE FROM summer_test.todo_tasks WHERE id = 1;
 
 
 module.exports = {
