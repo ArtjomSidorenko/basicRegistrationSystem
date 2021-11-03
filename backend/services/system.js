@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt');
 async function getUsers() {
     const rows = await db.query(
         `SELECT *
-         FROM basic_registration_system.user_data`
+         FROM bu19o6leu5rwvdct.user_data`
     );
     const data = helper.emptyOrRows(rows);
 
@@ -22,7 +22,7 @@ async function register(user_data) {
 
 
     const result = await db.query(
-        `INSERT INTO basic_registration_system.user_data (email, name, surname, password)
+        `INSERT INTO bu19o6leu5rwvdct.user_data (email, name, surname, password)
          VALUES (?, ?, ?, ?)`,
 
         [user_data.email, user_data.name, user_data.surname, hash]
@@ -44,7 +44,7 @@ async function login(loginRequest) {
 
     const rows = await db.query(
         `SELECT *
-         FROM basic_registration_system.user_data
+         FROM bu19o6leu5rwvdct.user_data
          where user_data.email = ?
          LIMIT 1;`,
         [loginRequest.email]
@@ -80,7 +80,7 @@ async function loginAdmin(loginRequest) {
 
     const rows = await db.query(
         `SELECT *
-         FROM basic_registration_system.admin_data
+         FROM bu19o6leu5rwvdct.admin_data
          where admin_data.email = ?;`,
         [loginRequest.email]
     );
@@ -119,7 +119,7 @@ async function loginAdmin(loginRequest) {
 async function deleting(registrationSystem) {
     const result = await db.query(
         `DELETE
-         FROM basic_registration_system.user_data
+         FROM bu19o6leu5rwvdct.user_data
          WHERE id = ?;`,
         [registrationSystem.removing]
     );
@@ -128,7 +128,7 @@ async function deleting(registrationSystem) {
 
 
     if (result.affectedRows) {
-        message = 'Saved successfully';
+        message = 'Saved successfully  gdgd';
     }
 
     return {message};

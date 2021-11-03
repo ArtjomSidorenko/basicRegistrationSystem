@@ -1,6 +1,6 @@
 USE basicRegistrationSystem;
 
-CREATE TABLE `adminData`
+CREATE TABLE `admin_data`
 (
     id         BIGINT       NOT NULL AUTO_INCREMENT PRIMARY KEY,
     email       VARCHAR(255) NOT NULL,
