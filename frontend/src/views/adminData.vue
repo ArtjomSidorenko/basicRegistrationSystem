@@ -21,6 +21,8 @@
             <td align="center">surname</td>
             <td align="center">password</td>
             <td align="center">erase</td>
+            <td align="center">upgrade</td>
+
           </tr>
           <tr v-for="(adminData) in registrationSystems" :key="adminData.id">
             <td align="center"><span>{{ adminData.email }}</span></td>
@@ -32,6 +34,8 @@
             <td align="center"><span>{{ adminData.password }}</span></td>
 
             <td align="center"><div class="remove-item" @click="removeUser(adminData)">&times;</div></td>
+
+            <td align="center"><div class="make_admin_button" @click="upgradeUser()"><span class="admin_button"></span></div></td>
           </tr>
         </table>
           </div>
@@ -49,7 +53,9 @@
 </template>
 
 <script>
+
 import axios from "axios";
+import router from "../router";
 
 export default {
   name: "registrationSystem",
@@ -70,11 +76,8 @@ export default {
   methods: {
 
     removeUser(adminData) {
-
       console.log(adminData);
-
-
-      axios.post("http://localhost:3333/api/data/deleting", {
+      axios.post("https://basicregistrationsystem-back.herokuapp.com/api/data/deleting", {
         removing: adminData.id
       })
           .then(() => {
@@ -83,13 +86,20 @@ export default {
 
     },
 
+    upgradeUser(){
+      axios.post("https://basicregistrationsystem-back.herokuapp.com/api/SelectingFromDefaultUsers", {
+
+      })
+    },
+
+
     getUserData() {
-      axios.get("http://localhost:3333/api/users").then((response) => {
+      axios.get("https://basicregistrationsystem-back.herokuapp.com/api/users").then((response) => {
         this.registrationSystems = response.data;
 
         this.hasLoaded = true;
       });
-    }
+      }
   }
 }
 </script>
@@ -137,6 +147,27 @@ export default {
   padding-top: 5px;
 }
 
+.make_admin_button{
+  position: relative;
+  width: 10px;
+  height: 10px;
+  background: #eaeef0;
+  margin: auto;
+  border-radius: 50%;
+  border: 2px solid #eaeef0;
+  box-shadow: -8px -8px 15px rgba(255, 255, 255, 1),
+  8px 8px 15px rgba(0, 0, 0, 0.2),
+  inset 3px 3px 5px rgba(0, 0, 0, 0.1),
+  inset -1px -1px 5px rgba(255, 255, 255, 1);
+}
+
+.make_admin_button:hover{
+  background: #5f2eea;
+transition: background-color 1s;
+}
+.admin_button{
+
+}
 /* container */
 .containerStart{
   background: rgba(255, 255, 255, 0.25);
@@ -145,6 +176,7 @@ export default {
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
+  overflow-x:auto;
 
 }
 
@@ -197,7 +229,7 @@ export default {
 
 
 .user_list{
-  overflow: auto;
+  overflow-x:auto;
   border-radius: 10px;
   border: 3px solid white;
 

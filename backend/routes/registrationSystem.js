@@ -60,5 +60,20 @@ router.get('/users', async function(req, res, next) {
     }
 });
 
+
+router.post('/SelectingFromDefaultUsers', async function(req, res, next) {
+    console.log('POST request /api/basicRegistrationSystem/MakeAdmin received with parameters: ' + JSON.stringify(req.body));
+
+    try {
+        const result = await registrationSystem.login(req.body) ;
+
+
+        res.json(result);
+    } catch (err) {
+        console.error(`Error while getting programming languages `, err.message);
+        next(err);
+    }
+});
+
 module.exports = router;
 

@@ -81,7 +81,7 @@ export default {
         return;
       }
 
-      axios.post("http://localhost:3333/api/register", {
+      axios.post("https://basicregistrationsystem-back.herokuapp.com/api/register", {
         email: this.email,
         name: this.name,
         surname: this.surname,
@@ -99,7 +99,7 @@ export default {
     },
 
     getUserData() {
-      axios.get("http://localhost:3333/api/users").then((response) => {
+      axios.get("https://basicregistrationsystem-back.herokuapp.com/api/users").then((response) => {
         this.registrationSystems = response.data;
 
         this.hasLoaded = true;

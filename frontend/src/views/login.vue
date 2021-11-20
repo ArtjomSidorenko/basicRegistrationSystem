@@ -80,7 +80,7 @@ export default {
         return;
       }
 
-      axios.post("http://localhost:3333/api/login", {
+      axios.post("https://basicregistrationsystem-back.herokuapp.com/api/login", {
         email: this.email,
         password: this.password
       })

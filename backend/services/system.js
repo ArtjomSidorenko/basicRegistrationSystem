@@ -3,11 +3,10 @@ const helper = require('../helper');
 const bcrypt = require('bcrypt');
 
 
-
 async function getUsers() {
     const rows = await db.query(
         `SELECT *
-         FROM bu19o6leu5rwvdct.user_data`
+         FROM user_data`
     );
     const data = helper.emptyOrRows(rows);
 
@@ -15,19 +14,16 @@ async function getUsers() {
 }
 
 
-
-
 async function register(user_data) {
     let hash = bcrypt.hashSync(user_data.password, 10);
 
 
     const result = await db.query(
-        `INSERT INTO bu19o6leu5rwvdct.user_data (email, name, surname, password)
+        `INSERT INTO user_data (email, name, surname, password)
          VALUES (?, ?, ?, ?)`,
 
         [user_data.email, user_data.name, user_data.surname, hash]
     );
-
 
 
     let message = 'Error in saving todo';
@@ -44,7 +40,7 @@ async function login(loginRequest) {
 
     const rows = await db.query(
         `SELECT *
-         FROM bu19o6leu5rwvdct.user_data
+         FROM user_data
          where user_data.email = ?
          LIMIT 1;`,
         [loginRequest.email]
@@ -80,11 +76,10 @@ async function loginAdmin(loginRequest) {
 
     const rows = await db.query(
         `SELECT *
-         FROM bu19o6leu5rwvdct.admin_data
+         FROM admin_data
          where admin_data.email = ?;`,
         [loginRequest.email]
     );
-
 
 
     if (rows.length === 0) {
@@ -114,12 +109,41 @@ async function loginAdmin(loginRequest) {
 }
 
 
+async function SelectingFromDefaultUsers(user) {
+    const rows = await db.query(
+        `SELECT *
+        from bu19o6leu5rwvdct.user_data`,
+        [user.id ,user.email, user.password, user.name, user.surname]
+    );
+    if (rows.length === 0) {
+        return {
+            message: "something went wrong"
+        }
+    } else {
+        const result = await MakeAdmin(user)
+        return result
+    }
+}
+
+async function MakeAdmin(accountRemove, user) {
+    const rows = await db.query(
+        `DELETE
+         FROM bu19o6leu5rwvdct.user_data
+         WHERE id = ?;`,
+        [accountRemove.removing],
+    `INSERT INTO  bu19o6leu5rwvdct.admin_data(id, email, password, name, surname)
+         VALUES (?, ?, ?, ?, ?)`
+
+        [user.id, user.email, user.password, user.name, user.surname]
+    )
+
+}
 
 
 async function deleting(registrationSystem) {
     const result = await db.query(
         `DELETE
-         FROM bu19o6leu5rwvdct.user_data
+         FROM user_data
          WHERE id = ?;`,
         [registrationSystem.removing]
     );
@@ -128,13 +152,11 @@ async function deleting(registrationSystem) {
 
 
     if (result.affectedRows) {
-        message = 'Saved successfully  gdgd';
+        message = 'Saved successfully';
     }
 
     return {message};
 }
-
-
 
 
 module.exports = {
@@ -142,5 +164,7 @@ module.exports = {
     login,
     register,
     deleting,
-    loginAdmin
+    loginAdmin,
+    MakeAdmin,
+    SelectingFromDefaultUsers,
 }
